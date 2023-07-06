@@ -1,8 +1,6 @@
+#  Guidance for HPC Numerical Weather Prediction (NWP) on AWS
+
 ## Overview
----
-title: "Guidance for HPC Numerical Weather Prediction (NWP) on AWS"
-weight: 00
----
 
 Amazon Web Services (AWS) provides the most elastic and scalable cloud infrastructure to run your weather workloads. With virtually unlimited capacity, engineers, researchers, HPC system administrators, and organizations can innovate beyond the limitations of on-premises HPC infrastructure.
 
@@ -10,13 +8,32 @@ HPC on AWS removes the long wait times and lost productivity often associated wi
 
 Find our Weather HPC customer case studies at https://aws.amazon.com/hpc/customers/, under **Weather**.
 
-Doing all parts of this workshop should take approximately 4 hours.
-
-This workshop is designed for builders who want to learn more about running weather codes within AWS.
+This guidance is designed for builders who want to learn more about running weather codes within AWS.
 
 ![Surface temperature](static/images/0-surface_temperature.gif)
 
+## Features and benefits
+features and benefits go here
+### Use cases
+
+## Architecture overview
+Architecture Overview goes here
+
+### Architecture diagram
+*Figure 1 - Reference Architecture *
+
+### Architecture steps
+
+## AWS services in this Guidance
+Services used in this guidance
+
+## Plan your deployment
+### Costs
+Costs go here
+### Sample cost table
+
 ## Security
+Security info goes here
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
 
