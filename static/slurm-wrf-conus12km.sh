@@ -30,3 +30,6 @@ sbatch slurm-wrf-conus12km.sh
 sleep 10
 echo '...WRF Job submitted, checking status'
 squeue
+# Sample output:
+# JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+# 5   compute      WRF ec2-user CF       0:19      2 compute-dy-hpc6a-[1-2]
