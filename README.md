@@ -21,9 +21,9 @@ features and benefits go here
 ### Architecture diagram
 Architecture diagram below shows a sample HPC Cluster Architecture and user interaction with itvia ParallelCluster UI  in order to run numerical weather prediction tasks
 
-<img src="images/hpc_cluster_architecture_user_integration.jpg" alt="Sample HPC Cluster Architecture" width="80%" >
+<img src="static/images/hpc_cluster_architecture_user_integration.jpg" alt="Sample HPC Cluster Architecture" width="80%" >
 <br/>
-Figure 1: Sample HPC Cluster Architecture and User interactions for numerical weather prediction on AWS
+Sample HPC Cluster Architecture and User interactions for numerical weather prediction on AWS
 
 ### Architecture steps
 Below are the steps of User interactiions with AWS ParallelCluster UI in order to configure HPC cluster with compute and storage capabilities, configure and run weather prediction model.
