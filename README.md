@@ -18,15 +18,15 @@ This guidance is designed for builders who want to learn more about running weat
 ### Architecture diagram
 Architecture diagram below shows a sample HPC Cluster Architecture and user interaction with itvia ParallelCluster UI  in order to run numerical weather prediction tasks
 
-<img src="static/images/hpc_cluster_architecture_user_integration.jpg" alt="Sample HPC Cluster Architecture" width="80%" />
+<img src="static/images/hpc_cluster_architecture_user_integration.jpg" alt="Sample HPC Cluster Architecture and user Interactions" width="80%" />
 <br/>
 Sample HPC Cluster Architecture and User interactions for Numerical Weather prediction on AWS
 
 ### Architecture steps
-Below are the steps of User interactiions with AWS ParallelCluster UI in order to configure HPC cluster with compute and storage capabilities, configure and run weather prediction model.
+Below are the steps of User interactiions with AWS ParallelCluster UI in order to configure HPC cluster with compute and storage capabilities, then deploy and run Weather prediction model.
 
-- Users authenticate to AWS ParallelCluster UI via Amazon Cognito, API Gateway and Lambda
-- Users connect to HPC Cluster via AWS ParallelCluster UI using SSM Connection or DCV
+- User authenticates to AWS ParallelCluster UI via Amazon Cognito, API Gateway and Lambda
+- User connects to HPC Cluster via AWS ParallelCluster UI using SSM Connection or DCV
 - SLURM (one of HPC resource managers from SchedMD ) is used to manage resources of AWS ParallelCluster using Amazon EC2 Auto scaling
 - Spack is a package manager for supercomputers, Linux, and macOS. It is used to install necessary compilers, libraries including NCAR Command Language (NCL) and Weather Research & Forecasting Model (WRF) model
 - Amazon FSx for Lustre storage created along with HPC cluster. Input data used for simulating WRF test model - 12-km CONUS (Continental United States) – is copied to /fsx directory mapped to that storage
