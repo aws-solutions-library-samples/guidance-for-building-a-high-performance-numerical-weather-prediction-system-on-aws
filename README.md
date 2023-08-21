@@ -1,4 +1,4 @@
-#  Guidance for HPC Numerical Weather Prediction (NWP) on AWS
+#  Guidance for Numerical Weather Prediction with Weather Research and Forecasting Model on AWS
 
 ## Overview
 
