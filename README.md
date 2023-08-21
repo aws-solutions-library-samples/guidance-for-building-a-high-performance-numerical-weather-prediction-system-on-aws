@@ -12,18 +12,15 @@ This guidance is designed for builders who want to learn more about running weat
 
 ![Surface temperature](static/images/0-surface_temperature.gif)
 
-## Features and benefits
-features and benefits go here
-### Use cases
 
-## Architecture overview
+## Architecture Overview
 
 ### Architecture diagram
 Architecture diagram below shows a sample HPC Cluster Architecture and user interaction with itvia ParallelCluster UI  in order to run numerical weather prediction tasks
 
-<img src="static/images/hpc_cluster_architecture_user_integration.jpg" alt="Sample HPC Cluster Architecture" width="80%" >
+<img src="static/images/hpc_cluster_architecture_user_integration.jpg" alt="Sample HPC Cluster Architecture" width="80%" />
 <br/>
-Sample HPC Cluster Architecture and User interactions for numerical weather prediction on AWS
+Sample HPC Cluster Architecture and User interactions for Numerical Weather prediction on AWS
 
 ### Architecture steps
 Below are the steps of User interactiions with AWS ParallelCluster UI in order to configure HPC cluster with compute and storage capabilities, configure and run weather prediction model.
@@ -50,9 +47,6 @@ The following AWS Services are deployed in this Guidance:
 
 
 ## Plan your deployment
-### Costs
-Costs go here
-### Sample cost table
 
 ## Security
 When you build systems on AWS infrastructure, security responsibilities are shared between you and AWS. This [shared responsibility model](https://aws.amazon.com/compliance/shared-responsibility-model/) reduces your operational burden because AWS operates, manages, and controls the components including the host operating system, the virtualization layer, and the physical security of the facilities in which the services operate. For more information about AWS security, visit [AWS Cloud Security](http://aws.amazon.com/security/).
