@@ -25,11 +25,11 @@ Sample HPC Cluster Architecture and User interactions for Numerical Weather pred
 ### Architecture steps
 Below are the steps of User interactiions with AWS ParallelCluster UI in order to configure HPC cluster with compute and storage capabilities, then deploy and run Weather prediction model.
 
-1. User authenticates to [AWS ParallelCluster UI](https://aws.amazon.com/hpc/parallelcluster/){:target="_blank"} via [Amazon Cognito](https://aws.amazon.com/cognito/), [API Gateway](https://aws.amazon.com/api-gateway/){:target="_blank"} and [Lambda](https://aws.amazon.com/lambda/){:target="_blank"}
+1. User authenticates to [AWS ParallelCluster UI](https://aws.amazon.com/hpc/parallelcluster/) via [Amazon Cognito](https://aws.amazon.com/cognito/), [API Gateway](https://aws.amazon.com/api-gateway/) and [Lambda](https://aws.amazon.com/lambda/)
 2. User connects to HPC Cluster via AWS ParallelCluster UI using SSM Connection or [NICE DCV](https://docs.aws.amazon.com/dcv/latest/adminguide/what-is-dcv.html) (latter can be used directly w/o ParallelCluster UI)
 3. [SLURM ](https://slurm.schedmd.com/) (HPC resource manager from SchedMD) is installed and used to manage resources of AWS ParallelCluster driving resource scaling.
 4. [Spack is](https://spack.io/) a Package manager for supercomputers, Linux, and macOS. It is installed and used to install necessary compilers and libraries, including NCAR Command Language (NCL) and [Weather Research & Forecasting Model (WRF) model](https://ncar.ucar.edu/what-we-offer/models/weather-research-and-forecasting-model-wrf)
-5. [Amazon FSx for Lustre](https://aws.amazon.com/fsx/lustre/){:target="_blank"} storage provisioned along with HPC cluster resources. Input data used for simulating WRF test model - 12-km CONUS (Continental United States) – is copied to /fsx directory mapped to that storage 
+5. [Amazon FSx for Lustre](https://aws.amazon.com/fsx/lustre/) storage provisioned along with HPC cluster resources. Input data used for simulating WRF test model - 12-km CONUS (Continental United States) – is copied to /fsx directory mapped to that storage 
 6. Users create _sbatch_ script to run the CONUS 12-km model, submit that job and monitor its status via _squeue_ command. 
 7. Weather Forecast results are stored locally in _/fsx/conus_12km/_ folder and can be visualized using NCL scripts
 
