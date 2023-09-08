@@ -1,3 +1,4 @@
+#this script sets up SPACK environment
 export SPACK_ROOT=/fsx/spack
 git clone -b v0.19.1 -c feature.manyFiles=true https://github.com/spack/spack $SPACK_ROOT
 echo "export SPACK_ROOT=/fsx/spack" >> $HOME/.bashrc
