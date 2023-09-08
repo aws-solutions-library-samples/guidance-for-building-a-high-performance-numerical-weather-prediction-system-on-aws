@@ -1,0 +1,155 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Setup for a VPC with one public and one private subnets.
+  Several subnets will be deployed, one public in us-east-2b,
+  the rest is private. A Internet Gateway and NAT Gateway
+  are deployed in the public subnet.
+  Author: maxhaws@
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties: 
+      CidrBlock: 192.168.0.0/20
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags: 
+        - Key: Name
+          Value: vpc-hpc
+
+  publicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties: 
+      CidrBlock: 192.168.12.0/22
+      AvailabilityZone: 
+        Fn::Select: 
+          - 1
+          - Fn::GetAZs: ""
+      MapPublicIpOnLaunch: true
+      Tags: 
+        - Key: Name
+          Value: subnet-hpc-public
+      VpcId: !Ref VPC
+
+  privateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties: 
+      CidrBlock: 192.168.0.0/22
+      AvailabilityZone: 
+        Fn::Select: 
+          - 1
+          - Fn::GetAZs: ""
+      MapPublicIpOnLaunch: false
+      Tags: 
+        - Key: Name
+          Value: subnet-hpc-private
+      VpcId: !Ref VPC
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties: 
+      Tags: 
+        - Key: Name
+          Value: igw-hpc
+
+  InternetGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: !Ref InternetGateway
+      VpcId: !Ref VPC
+
+  NatGatewayEIP:
+    Type: AWS::EC2::EIP
+    DependsOn: InternetGatewayAttachment
+    Properties:
+      Domain: vpc
+
+  NatGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt NatGatewayEIP.AllocationId
+      SubnetId: !Ref publicSubnet
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: route-hpc-public
+
+  DefaultPublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: InternetGatewayAttachment
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  PublicSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      SubnetId: !Ref publicSubnet
+
+  PrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: route-hpc-private
+
+  DefaultPrivateRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PrivateRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: !Ref NatGateway
+
+  PrivateSubnet1RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref PrivateRouteTable
+      SubnetId: !Ref privateSubnet1
+
+  AllDefaultSecurityGroupEgress:
+    Type: AWS::EC2::SecurityGroupEgress
+    Properties: 
+      DestinationSecurityGroupId: !GetAtt VPC.DefaultSecurityGroup
+      FromPort: -1
+      GroupId: !GetAtt VPC.DefaultSecurityGroup
+      IpProtocol: -1
+      ToPort: -1
+
+  InternetDefaultSecurityGroupEgress:
+    Type: AWS::EC2::SecurityGroupEgress
+    Properties:
+      CidrIp: 0.0.0.0/0
+      FromPort: -1
+      GroupId: !GetAtt VPC.DefaultSecurityGroup
+      IpProtocol: -1
+      ToPort: -1
+
+  AllDefaultSecurityGroupIngress:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties: 
+      SourceSecurityGroupId: !GetAtt VPC.DefaultSecurityGroup
+      FromPort: -1
+      GroupId: !GetAtt VPC.DefaultSecurityGroup
+      IpProtocol: -1
+      ToPort: -1
+
+Outputs:
+  VPC:
+    Description: A reference to the created VPC
+    Value: !Ref VPC
+
+  PublicSubnets:
+    Description: A list of the public subnets
+    Value: !Join [ ",", [ !Ref publicSubnet ]]
+
+  PrivateSubnets:
+    Description: A list of the private subnets
+    Value: !Join [ ",", [ !Ref privateSubnet1 ]]
