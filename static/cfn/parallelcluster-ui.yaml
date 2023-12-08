@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: This template installs the Parallel Cluster UI for Numercical Weather Prediction guidance (SO12345)
+Description: (SO12345) - This template installs the Parallel Cluster UI for Numercical Weather Prediction guidance 
 Resources:
   WorkshopUI:
     Type: 'AWS::IAM::ServiceLinkedRole'
