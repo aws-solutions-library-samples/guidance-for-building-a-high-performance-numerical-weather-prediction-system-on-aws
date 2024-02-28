@@ -6,12 +6,13 @@ Amazon Web Services (AWS) provides the most elastic and scalable cloud infrastru
 
 HPC on AWS removes the long wait times and lost productivity often associated with on-premises HPC clusters. Flexible HPC cluster configurations and virtually unlimited scalability allows you to grow and shrink your infrastructure as your workloads dictate, not the other way around. Additionally, with access to a broad portfolio of cloud-based services for Data Analytics, Artificial Intelligence (AI), and Machine Learning (ML), you can reinvent traditional NWP workflows to derive results faster and under budget.
 
-Find our Weather HPC customer case studies at https://aws.amazon.com/hpc/customers/, under **Weather**.
+Find our Weather HPC customer case studies at: https://aws.amazon.com/hpc/customers/, under **Weather**.
 
-This guidance is designed for builders who want to learn more about running weather codes within AWS.
+This guidance is intended for builders who want to learn hands-on about running weather codes on AWS.
 
-![Surface temperature](static/images/0-surface_temperature.gif)
-
+<img src="static/images/0-surface_temperature.gif" alt="Sample Surface Temperature Model" width="80%" />
+<br/>
+Figure 1. Sample Surface temperature model obtained by Numerical Weather prediction
 
 ## Architecture Overview
 
@@ -20,10 +21,10 @@ Architecture diagram below shows a sample HPC Cluster Architecture and user inte
 
 <img src="static/images/hpc_cluster_architecture_reviewed.jpg" alt="Sample HPC Cluster Architecture and user Interactions" width="80%" />
 <br/>
-Sample HPC Cluster Architecture and User interactions for Numerical Weather prediction on AWS
+Figure 2. HPC Cluster Architecture and User interactions for running Numerical Weather prediction on AWS
 
 ### Architecture steps
-Below are the steps of User interactiions with AWS ParallelCluster UI in order to configure HPC cluster with compute and storage capabilities, then deploy and run Weather prediction model.
+The follwing are the steps of User interactions with AWS ParallelCluster UI in order to configure HPC cluster with compute and storage capabilities, then deploy and run Numerical Weather prediction model.
 
 1. User authenticates to [AWS ParallelCluster UI](https://aws.amazon.com/hpc/parallelcluster/) via [Amazon Cognito](https://aws.amazon.com/cognito/), [API Gateway](https://aws.amazon.com/api-gateway/) and [Lambda](https://aws.amazon.com/lambda/)
 2. User connects to HPC Cluster via AWS ParallelCluster UI using SSM Connection or [NICE DCV](https://docs.aws.amazon.com/dcv/latest/adminguide/what-is-dcv.html) (latter can be used directly w/o ParallelCluster UI)
@@ -33,7 +34,7 @@ Below are the steps of User interactiions with AWS ParallelCluster UI in order t
 6. Users create _sbatch_ script to run the CONUS 12-km model, submit that job and monitor its status via _squeue_ command. 
 7. Weather Forecast results are stored locally in _/fsx/conus_12km/_ folder and can be visualized using NCL scripts
 
-## AWS services in this Guidance
+## AWS Services in this Guidance
 
 The following AWS Services are deployed in this Guidance:
 
@@ -54,7 +55,10 @@ When you build systems on AWS infrastructure, security responsibilities are shar
 <br>
 HPC cluster EC2 components are deployed into a [Virtual Private Cloud](https://aws.amazon.com/vpc/) (VPC) which provides additional network security isolation for all contained components. Head Node is depoyed into a Public subnet and available for access via secure connections (SSH and DCV), compute nodes are deployed into Private subnets and managed from Head node via SLURM package manager. Data stored in Amazon FSx for Lustre is [enrypted at rest and in transit](https://docs.aws.amazon.com/fsx/latest/LustreGuide/encryption-fsxl.html)
 
-<b>Please see published [Implementation Guide](https://implementationguides.kits.eventoutfitters.aws.dev/numerical-weather-0608/compute/numerical-weather-prediction-with-forecasting-model.html) for more step-by-step deployment of this guidance sample code.</b>
+## Deployment Steps
+<!-- TO DO: update the link once is published -->
+
+<b>Please see published [Implementation Guide](https://implementationguides.kits.eventoutfitters.aws.dev/numerical-weather-0608/compute/numerical-weather-prediction-with-forecasting-model.html) for step-by-step deployment instructions for this guidance.</b>
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
 
