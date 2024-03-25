@@ -17,5 +17,5 @@ ulimit -a
 export OMP_NUM_THREADS=2
 export FI_PROVIDER=efa
 export KMP_AFFINITY=compact
-echo " Will run the following command: time mpirun $wrf_exe"
-time mpirun  $wrf_exe
+echo " Will run the following command: time mpirun --report-bindings --bind-to core --map-by slot:pe=${OMP_NUM_THREADS} $wrf_exe"
+time mpirun --report-bindings --bind-to core --map-by slot:pe=${OMP_NUM_THREADS} $wrf_exe
