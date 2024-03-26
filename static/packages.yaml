@@ -1,31 +1,31 @@
 ---  # Zen2/3 packages
 packages:
-  openmpi:
-    buildable: false
-    externals:
-      - prefix: /opt/amazon/openmpi/
-        spec: openmpi@4.1.6
-    require: ['fabrics=ofi +legacylaunchers schedulers=slurm']
-  libfabric:
-    buildable: false
-    externals:
-      - prefix: /opt/amazon/efa/
-        spec: libfabric@1.19.0
-    require: ['fabrics=shm,efa']
-  pmix:
-    require: ["pmix@3:"]
-  slurm:
-    buildable: false
-    externals:
-      - prefix: /opt/slurm/
-        spec: slurm@23.02.7 +pmix
-  wrf:
-    require:
-      - one_of: ["wrf@4.5.1 build_type=dm+sm %gcc"]
-  all:
-    compiler: [gcc]
-    permissions:
-      read: world
-      write: user
-    providers:
-      mpi: [openmpi]
+ openmpi:
+   buildable: false
+   externals:
+    - prefix: /opt/amazon/openmpi/
+      spec: openmpi@4.1.6
+   require: ['fabrics=ofi +legacylaunchers schedulers=slurm']
+ libfabric:
+   buildable: false
+   externals:
+    - prefix: /opt/amazon/efa/
+      spec: libfabric@1.19.0
+   require: ['fabrics=shm,efa']
+ pmix:
+   require: ["pmix@3:"]
+ slurm:
+   buildable: false
+   externals:
+    - prefix: /opt/slurm/
+      spec: slurm@23.02.7 +pmix
+ wrf:
+   require:
+    - one_of: ["wrf@4.5.1 build_type=dm+sm %gcc ^openmpi"]
+ all:
+   compiler: [gcc]
+   permissions:
+    read: world
+    write: user
+   providers:
+    mpi: [openmpi]
