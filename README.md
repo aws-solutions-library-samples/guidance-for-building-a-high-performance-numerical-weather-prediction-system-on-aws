@@ -6,12 +6,12 @@ Amazon Web Services (AWS) provides the most elastic and scalable cloud infrastru
 
 High Performance Compute (HPC) on AWS removes the long wait times and lost productivity often associated with on-premises HPC clusters. Flexible HPC cluster configurations and virtually unlimited scalability allows you to grow and shrink your infrastructure as your workloads dictate, not the other way around. Additionally, with access to a broad portfolio of cloud-based services for Data Analytics, Artificial Intelligence (AI), and Machine Learning (ML), you can reinvent traditional NWP workflows to derive results faster and under budget.
 
-Find our Weather HPC customer case studies at: https://aws.amazon.com/hpc/customers/, under **Weather**.
+PLease find AWS Weather HPC customer case studies [here](https://aws.amazon.com/hpc/customers/), under **Weather**.
 
-This guidance is intended for builders who want to learn hands-on about running weather codes on AWS.
+This guidance is intended for builders who want to learn hands-on about running weather fofrecasting in AWS Cloud.
 
 <img src="static/images/0-surface_temperature.gif" alt="Sample Surface Temperature Model" width="80%" />
-<br/>
+
 Figure 1. Sample Surface temperature model obtained by Numerical Weather prediction
 
 ## Architecture Overview
@@ -22,7 +22,7 @@ Architecture diagrams below shows a sample HPC Cluster architecture, provisoning
 <img src="static/images/hpc_cluster_architecture_final.png" alt="Provision AWS ParallelCluster UI and configure HPC cluster" width="80%" />
 <br/>
 Figure 2: AWS ParallelCluster UI and HPC Cluster Architecture
-<br/>
+
 Below are steps that provision AWS ParallelCluster UI and configure HPC cluster with compute and storage capabilities:
 
 1. Users  deploy guidance [Amazon CloudFormation](https://aws.amazon.com/cloudformation/)  stack that provisions networking resources ([Amazon VPC](https://aws.amazon.com/vpc/), subnets), [Amazon API Gateway](https://aws.amazon.com/api-gateway/), storage ([Amazon FSx for Lustre](https://aws.amazon.com/fsx/lustre/)) and finally [Amazon ParallelCluster UI](https://docs.aws.amazon.com/parallelcluster/) .
@@ -35,7 +35,7 @@ Below are steps that provision AWS ParallelCluster UI and configure HPC cluster 
 <img src="static/images/hpc_weather_prediction_workflow.png" alt="Sample HPC Cluster Architecture and user Interactions" width="80%" />
 <br/>
 Figure 3. HPC Cluster Architecture and User interactions for running Numerical Weather prediction on AWS
-<br/>
+
 Below are the steps of User interactions with AWS ParallelCluster UI in order to configure HPC cluster with compute and storage capabilities, then deploy and run Numerical Weather prediction model.
 
 1. User authenticates to [AWS ParallelCluster UI](https://aws.amazon.com/hpc/parallelcluster/) via [Amazon Cognito](https://aws.amazon.com/cognito/), [API Gateway](https://aws.amazon.com/api-gateway/) and [Lambda](https://aws.amazon.com/lambda/)
@@ -67,11 +67,11 @@ The following AWS Services are deployed in this Guidance:
 
 ### Supported AWS Regions
 
-This Guidance uses EC2 services with [specific instances such as `hpc6`](https://aws.amazon.com/ec2/instance-types/hpc6/) and FSx for Lustre services, which may not currently be available in all AWS Regions. You must launch this solution in an AWS Region where EC2 specific instance types and Fsx is available. For the most current availability of AWS services by Region, refer to the [AWS
+This Guidance uses EC2 services with [specific instances such as `hpc6`](https://aws.amazon.com/ec2/instance-types/hpc6/) and FSx for Lustre storage services, which may not currently be available in all AWS Regions. You must launch this solution in an AWS Region where EC2 specific instance types and FSx is available. For the most current availability of AWS services by Region, refer to the [AWS
 Regional Services
 List](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/).
 
-**Guidance for Numerical Weather Prediction with Weather Research and Forecasting Model on AWS** is currently supported in the following AWS Regions (based on availability of [hpc6a](https://aws.amazon.com/ec2/instance-types/hpc6a/), [hpc7a](https://aws.amazon.com/ec2/instance-types/hpc7a/) and [hpc7g](https://aws.amazon.com/ec2/instance-types/hpc7g/) instances:
+**Guidance for Building a High-Performance Numerical Weather Prediction System on AWS** is currently supported in the following AWS Regions (based on availability of [hpc6a](https://aws.amazon.com/ec2/instance-types/hpc6a/), [hpc7a](https://aws.amazon.com/ec2/instance-types/hpc7a/) and [hpc7g](https://aws.amazon.com/ec2/instance-types/hpc7g/) instances:
 
 
 | AWS Region     | Amazon EC2 HPC Optimized Instance type                                                                                   |
