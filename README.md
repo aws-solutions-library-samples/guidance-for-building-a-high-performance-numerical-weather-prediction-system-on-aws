@@ -91,12 +91,12 @@ which the services operate. For more information about AWS security, visit [AWS 
 
 [AWS ParallelCluster](https://aws.amazon.com/hpc/parallelcluster/) users are securely authenticiated and authorized to their roles via [Amazon Cognito](https://aws.amazon.com/cognito/) user pool service. HPC cluster EC2 components are deployed into a Virtual Private Cloud (VPC) which provides additional network security isolation for all contained components. Head Node is depoyed into a Public subnet and available for access via secure connections (SSH and DCV), compute nodes are deployed into Private subnet and managed from Head node via SLURM package manager. Data stored in Amazon FSx for Lustre is [enrypted at rest and in transit](https://docs.aws.amazon.com/fsx/latest/LustreGuide/encryption-fsxl.html).
 
+See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+
 ## Deployment Steps
 <!-- TO DO: update the link once is published -->
 
 <b>Please see published [Implementation Guide](https://implementationguides.kits.eventoutfitters.aws.dev/numerical-weather-0608/compute/numerical-weather-prediction-with-forecasting-model.html) for step-by-step deployment instructions for this guidance.</b>
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
 
 ## License
 
