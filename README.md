@@ -17,7 +17,7 @@ Figure 1. Sample Surface temperature model obtained by Numerical Weather predict
 ## Architecture Overview
 
 ### Architecture diagrams
-Architecture diagrams below shows a sample HPC Cluster architecture, provisoning process and user interactionsvia ParallelCluster UI  in order to run numerical weather forecasting tasks
+Architecture diagrams below show sample HPC Cluster architecture, provisoning process and user interactions via ParallelCluster UI in order to run numerical weather forecasting tasks
 <br/>
 <img src="static/images/hpc_cluster_architecture_final.png" alt="Provision AWS ParallelCluster UI and configure HPC cluster" width="80%" />
 <br/>
