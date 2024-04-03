@@ -16,13 +16,13 @@ Figure 1. Sample Surface temperature model obtained by Numerical Weather predict
 
 ## Architecture Overview
 
-### Architecture diagram
-Architecture diagrams below shows a sample HPC Cluster Architecture and user interaction with it via ParallelCluster UI  in order to run numerical weather prediction tasks
-
-<img src="static/images/hpc_weather_prediction_final.png" alt="Provision AWS ParallelCluster UI and configure HPC cluster" width="80%" />
-*Figure 1: AWS ParallelCluster UI and HPC Cluster Architecture*
-<br>
-
+### Architecture diagrams
+Architecture diagrams below shows a sample HPC Cluster architecture, provisoning process and user interactionsvia ParallelCluster UI  in order to run numerical weather forecasting tasks
+<br/>
+<img src="static/images/hpc_cluster_architecture_final.png" alt="Provision AWS ParallelCluster UI and configure HPC cluster" width="80%" />
+<br/>
+Figure 2: AWS ParallelCluster UI and HPC Cluster Architecture
+<br/>
 Below are steps that provision AWS ParallelCluster UI and configure HPC cluster with compute and storage capabilities:
 
 1. Users  deploy guidance [Amazon CloudFormation](https://aws.amazon.com/cloudformation/)  stack that provisions networking resources ([Amazon VPC](https://aws.amazon.com/vpc/), subnets), [Amazon API Gateway](https://aws.amazon.com/api-gateway/), storage ([Amazon FSx for Lustre](https://aws.amazon.com/fsx/lustre/)) and finally [Amazon ParallelCluster UI](https://docs.aws.amazon.com/parallelcluster/) .
@@ -31,21 +31,20 @@ Below are steps that provision AWS ParallelCluster UI and configure HPC cluster 
 4. Authenticated Users provision [HPC clusters](https://aws.amazon.com/hpc/) via ParallelCluster UI using sample cluster specifications available with guidance code. Each HPC cluster has a Head node and Compute node(s) getting dynamically provisioned for application workload execution.
 5. Users authenticated via ParallelCluster UI can connect to HPC cluster using [AWS SSM Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) or via [NICE DCV](https://www.ni-sp.com/products/nice-dcv/) sessions
 
-
 <br>
 <img src="static/images/hpc_weather_prediction_workflow.png" alt="Sample HPC Cluster Architecture and user Interactions" width="80%" />
 <br/>
 Figure 3. HPC Cluster Architecture and User interactions for running Numerical Weather prediction on AWS
-
+<br/>
 Below are the steps of User interactions with AWS ParallelCluster UI in order to configure HPC cluster with compute and storage capabilities, then deploy and run Numerical Weather prediction model.
 
 1. User authenticates to [AWS ParallelCluster UI](https://aws.amazon.com/hpc/parallelcluster/) via [Amazon Cognito](https://aws.amazon.com/cognito/), [API Gateway](https://aws.amazon.com/api-gateway/) and [Lambda](https://aws.amazon.com/lambda/)
 2. User connects to HPC Cluster via AWS ParallelCluster UI using SSM Connection or [NICE DCV](https://docs.aws.amazon.com/dcv/latest/adminguide/what-is-dcv.html) (latter can be used directly w/o ParallelCluster UI)
 3. [SLURM ](https://slurm.schedmd.com/) (HPC resource manager from SchedMD) is installed and used to manage resources of AWS ParallelCluster driving resource scaling.
-4. [Spack is](https://spack.io/) a Package manager for supercomputers, Linux, and macOS. It is installed and used to install necessary compilers and libraries, including NCAR Command Language (NCL) and [Weather Research & Forecasting Model (WRF) model](https://ncar.ucar.edu/what-we-offer/models/weather-research-and-forecasting-model-wrf)
-5. [Amazon FSx for Lustre](https://aws.amazon.com/fsx/lustre/) storage provisioned along with HPC cluster resources. Input data used for simulating WRF test model - 12-km CONUS (Continental United States) – is copied to /fsx directory mapped to that storage 
+4. [Spack](https://spack.io/) is a Package manager for supercomputers, Linux, and macOS. It is used to install necessary compilers and libraries, including NCAR Command Language (NCL) and [Weather Research & Forecasting Model (WRF) model](https://ncar.ucar.edu/what-we-offer/models/weather-research-and-forecasting-model-wrf)
+5. [Amazon FSx for Lustre](https://aws.amazon.com/fsx/lustre/) storage is provisioned along with other HPC cluster resources. Input data used for simulating WRF test model - 12-km CONUS (Continental United States) – is copied to `/fsx` directory mapped to that storage 
 6. Users create _sbatch_ script to run the CONUS 12-km model, submit that job and monitor its status via _squeue_ command. 
-7. Weather Forecast results are stored locally in _/fsx/conus_12km/_ folder and can be visualized using NCL scripts
+7. Weather Forecast results are stored locally in the _/fsx/conus_12km/_ folder and can be visualized using NCL scripts
 
 ## AWS Services in this Guidance
 
