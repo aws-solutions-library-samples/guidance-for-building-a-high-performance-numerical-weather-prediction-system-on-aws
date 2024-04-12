@@ -82,7 +82,26 @@ List](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-se
 | us-east-1      | hpc7g.4xlarge<br> hpc7g.8xlarge<br> hpc7g.16xlarge<br>                                                                   |
 | us-east-2      | hpc6a.48xlarge <br> hpc6id.32xlarge <br> hpc7a.12xlarge <br> hpc7a.24xlarge <br> hpc7a.48xlarge <br> hpc7a.96xlarge <br> |
 
-## Security
+### Cost 
+
+You are responsible for the cost of the AWS services used while running this guidance. 
+
+Please refer to the [sample pricing webpage](https://calculator.aws/#/estimate?id=67ae5451a69c58dacd7dd7235a61834ae07e6f61){:target="_blank"} for each AWS Service used in this Guidance. Please note that monthly costs assume that an HPC cluster with Head Node of instanceType `c6a.2xlarge` and two Compute Nodes  of instanceType `hpc6a.48xlarge` with `1200 GB` of FSx for Lustre persistent storage provisioned for that cluster that are active 50%. In reality, computeNodes get de-provisonied around 10 min after completing a job and therefore monthly cost would be lower than this  estimate.
+
+#### Sample cost table
+
+The following table provides a sample cost breakdown for an HPC cluster with one `c6a.2xlarge` Head Node and two Compute Nodes  of instanceType `hpc6a.48xlarge` with `1200 GB` of FSx for Lustre persistent storage allocated for it deployed in the `us-east-2` region: 
+
+
+| Node Processor Type | On Demand Cost/month USD| 
+| --------------------| ----------------- |
+| *c6a.2xlarge*       |  $226.58            |   
+| *hpc6a.48xlarge*    |  $2,102.40            |  
+| *FSx Lustre storage*|  $720.07           |  
+| *VPC, subnets*|  $283.50           |  
+| *Total estimate*|  $3,332.55       |
+
+### Security
 
 When you build systems on AWS infrastructure, security responsibilities are shared between you and AWS. This [shared responsibility
 model](https://aws.amazon.com/compliance/shared-responsibility-model/) reduces your operational burden because AWS operates, manages, and
