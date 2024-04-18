@@ -115,7 +115,7 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## Deployment Steps
 <!-- TO DO: update the link once is published -->
 
-<b>Please see published [Implementation Guide](https://implementationguides.kits.eventoutfitters.aws.dev/numerical-weather-0608/compute/numerical-weather-prediction-with-forecasting-model.html) for step-by-step deployment instructions for this guidance.</b>
+<b>Please see published [Implementation Guide](https://aws-solutions-library-samples.github.io/compute/building-a-high-performance-numerical-weather-prediction-system-on-aws.html#create-and-connect-to-the-hpc-cluster) for step-by-step deployment instructions for this guidance.</b>
 
 ## License
 
