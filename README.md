@@ -86,7 +86,7 @@ List](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-se
 
 You are responsible for the cost of the AWS services used while running this guidance. 
 
-Please refer to the [sample pricing webpage](https://calculator.aws/#/estimate?id=67ae5451a69c58dacd7dd7235a61834ae07e6f61){:target="_blank"} for each AWS Service used in this Guidance. Please note that monthly costs assume that an HPC cluster with Head Node of instanceType `c6a.2xlarge` and two Compute Nodes  of instanceType `hpc6a.48xlarge` with `1200 GB` of FSx for Lustre persistent storage provisioned for that cluster that are active 50%. In reality, computeNodes get de-provisonied around 10 min after completing a job and therefore monthly cost would be lower than this  estimate.
+Please refer to the [sample pricing webpage](https://calculator.aws/#/estimate?id=67ae5451a69c58dacd7dd7235a61834ae07e6f61) for each AWS Service used in this Guidance. Please note that monthly costs assume that an HPC cluster with Head Node of instanceType `c6a.2xlarge` and two Compute Nodes  of instanceType `hpc6a.48xlarge` with `1200 GB` of FSx for Lustre persistent storage provisioned for that cluster that are active 50%. In reality, computeNodes get de-provisonied around 10 min after completing a job and therefore monthly cost would be lower than this  estimate.
 
 #### Sample cost table
 
