@@ -19,7 +19,7 @@ Figure 1. Sample Surface temperature model obtained by Numerical Weather predict
 ### Architecture diagrams
 Architecture diagrams below show sample HPC Cluster architecture, provisoning process and user interactions via ParallelCluster UI in order to run numerical weather forecasting tasks
 <br/>
-<img src="static/images/hpc_cluster_architecture_final.png" alt="Provision AWS ParallelCluster UI and configure HPC cluster" width="80%" />
+<img src="static/images/hpc_cluster_architecture_review_update.png" alt="Provision AWS ParallelCluster UI and configure HPC cluster" width="80%" />
 <br/>
 Figure 2: AWS ParallelCluster UI and HPC Cluster Architecture
 
@@ -29,17 +29,17 @@ Below are steps that provision AWS ParallelCluster UI and configure HPC cluster 
 2. Amazon ParallelCluster UI endpoint is available for Users authentication  via [Amazon API Gateway](https://aws.amazon.com/api-gateway/) 
 3. Users authenticate to AWS ParallelCluster UI endpoint via integrated triggering triggering [AWS Lambda](https://aws.amazon.com/lambda/)) function and handling login details via [Amazon Cognito](https://aws.amazon.com/cognito/).
 4. Authenticated Users provision [HPC clusters](https://aws.amazon.com/hpc/) via ParallelCluster UI using sample cluster specifications available with guidance code. Each HPC cluster has a Head node and Compute node(s) getting dynamically provisioned for application workload execution.
-5. Users authenticated via ParallelCluster UI can connect to HPC cluster using [AWS SSM Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) or via [NICE DCV](https://www.ni-sp.com/products/nice-dcv/) sessions
+5. Users authenticated via ParallelCluster UI can connect to HPC cluster using [AWS SSM Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) or via [Amazon DCV](https://docs.aws.amazon.com/dcv/latest/adminguide/what-is-dcv.html) sessions
 
 <br>
-<img src="static/images/hpc_weather_prediction_workflow.png" alt="Sample HPC Cluster Architecture and user Interactions" width="80%" />
+<img src="static/images/hpc_weather_prediction_workflow_review.png" alt="Sample HPC Cluster Architecture and user Interactions" width="80%" />
 <br/>
 Figure 3. HPC Cluster Architecture and User interactions for running Numerical Weather prediction on AWS
 
 Below are the steps of User interactions with AWS ParallelCluster UI in order to configure HPC cluster with compute and storage capabilities, then deploy and run Numerical Weather prediction model.
 
 1. User authenticates to [AWS ParallelCluster UI](https://aws.amazon.com/hpc/parallelcluster/) via [Amazon Cognito](https://aws.amazon.com/cognito/), [API Gateway](https://aws.amazon.com/api-gateway/) and [Lambda](https://aws.amazon.com/lambda/)
-2. User connects to HPC Cluster via AWS ParallelCluster UI using SSM Connection or [NICE DCV](https://docs.aws.amazon.com/dcv/latest/adminguide/what-is-dcv.html) (latter can be used directly w/o ParallelCluster UI)
+2. User connects to HPC Cluster via AWS ParallelCluster UI using SSM Connection or [Amazon DCV](https://docs.aws.amazon.com/dcv/latest/adminguide/what-is-dcv.html) (latter can be used directly w/o ParallelCluster UI)
 3. [SLURM ](https://slurm.schedmd.com/) (HPC resource manager from SchedMD) is installed and used to manage resources of AWS ParallelCluster driving resource scaling.
 4. [Spack](https://spack.io/) is a Package manager for supercomputers, Linux, and macOS. It is used to install necessary compilers and libraries, including NCAR Command Language (NCL) and [Weather Research & Forecasting Model (WRF) model](https://ncar.ucar.edu/what-we-offer/models/weather-research-and-forecasting-model-wrf)
 5. [Amazon FSx for Lustre](https://aws.amazon.com/fsx/lustre/) storage is provisioned along with other HPC cluster resources. Input data used for simulating WRF test model - 12-km CONUS (Continental United States) – is copied to `/fsx` directory mapped to that storage 
